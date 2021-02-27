@@ -1,0 +1,36 @@
+OrdererOrgs:
+    - Name: OrdererMinisterioSalud
+      Domain: historiaclinicaelectronica.com
+      EnableNodeOUs: true
+      Specs:
+        - Hostname: orderer
+          SANS:
+            - localhost
+PeerOrgs:
+    - Name: Eps1
+      Domain: eps1.historiaclinicaelectronica.com
+      EnableNodeOUs: true
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+    - Name: Eps2
+      Domain: eps2.historiaclinicaelectronica.com
+      EnableNodeOUs: true
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+    - Name: Eps3
+      Domain: eps3.historiaclinicaelectronica.com
+      EnableNodeOUs: true    
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
