@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 OrdererOrgs:
-    - Name: Orderer
+    - Name: OrdererMinisterioSalud
       Domain: acme.com
       EnableNodeOUs: true
       Specs:
@@ -12,7 +12,7 @@ OrdererOrgs:
           SANS:
             - localhost
 PeerOrgs:
-    - Name: Org1
+    - Name: Eps1
       Domain: org1.acme.com
       EnableNodeOUs: true
       Template:
@@ -21,7 +21,7 @@ PeerOrgs:
           - localhost
       Users:
         Count: 1
-    - Name: Org2
+    - Name: Eps2
       Domain: org2.acme.com
       EnableNodeOUs: true
       Template:
@@ -30,7 +30,7 @@ PeerOrgs:
           - localhost
       Users:
         Count: 1
-    - Name: Org3
+    - Name: Eps3
       Domain: org3.acme.com
       EnableNodeOUs: true    
       Template:
