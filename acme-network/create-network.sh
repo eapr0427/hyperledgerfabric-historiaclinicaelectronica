@@ -9,6 +9,27 @@ cryptogen generate --config=./crypto-config.yaml
 
 
 echo '####################################################'
+echo 'Creación de bloque génesis'
+echo '####################################################'
+
+configtxgen -profile ThreeOrgsOrdererGenesis -channelID system-channel -outputBlock ./channel-artifacts/genesis.block
+
+
+echo '####################################################'
+echo 'Creación Transacción del Canal'
+echo '####################################################'
+configtxgen -profile ThreeOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID marketplace
+
+
+echo '####################################################'
+echo 'Creación Anchor transaction files'
+echo '####################################################'
+
+configtxgen -profile ThreeOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -channelID marketplace -asOrg Org1MSP
+
+
+
+echo '####################################################'
 echo 'CHANNEL_NAME=marketplace'
 echo '####################################################'
 export CHANNEL_NAME=marketplace
