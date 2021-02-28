@@ -18,21 +18,21 @@ configtxgen -profile ThreeOrgsOrdererGenesis -channelID system-channel -outputBl
 echo '####################################################'
 echo 'Creación Transacción del Canal'
 echo '####################################################'
-configtxgen -profile ThreeOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID marketplace
+configtxgen -profile ThreeOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID historiaclinicaelectronica
 
 
 echo '####################################################'
 echo 'Creación Anchor transaction files'
 echo '####################################################'
 
-configtxgen -profile ThreeOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -channelID marketplace -asOrg Org1MSP
+configtxgen -profile ThreeOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -channelID historiaclinicaelectronica -asOrg Org1MSP
 
 
 
 echo '####################################################'
-echo 'CHANNEL_NAME=marketplace'
+echo 'CHANNEL_NAME=historiaclinicaelectronica'
 echo '####################################################'
-export CHANNEL_NAME=marketplace
+export CHANNEL_NAME=historiaclinicaelectronica
 export VERBOSE=false
 export FABRIC_CFG_PATH=$PWD
 
