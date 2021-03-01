@@ -27,16 +27,16 @@
             Policies:
                 Readers:
                     Type: Signature
-                    Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
+                    Rule: "OR('Eps1MSP.admin', 'Eps1MSP.peer', 'Eps1MSP.client')"
                 Writers:
                     Type: Signature
-                    Rule: "OR('Org1MSP.admin', 'Org1MSP.client')"
+                    Rule: "OR('Eps1MSP.admin', 'Eps1MSP.client')"
                 Admins:
                     Type: Signature
-                    Rule: "OR('Org1MSP.admin')"
+                    Rule: "OR('Eps1MSP.admin')"
                 Endorsement:
                     Type: Signature
-                    Rule: "OR('Org1MSP.peer')"
+                    Rule: "OR('Eps1MSP.peer')"
             AnchorPeers:
                 - Host: peer0.eps1.historiaclinicaelectronica.com
                   Port: 7051
