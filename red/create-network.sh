@@ -25,6 +25,9 @@ echo '####################################################'
 
 configtxgen -profile HistoriaClinicaChannel -outputAnchorPeersUpdate ./channel-artifacts/Eps1MSPanchors.tx -channelID historiaclinicaelectronica -asOrg Eps1MSP
 
+configtxgen -profile HistoriaClinicaChannel -outputAnchorPeersUpdate ./channel-artifacts/Eps2MSPanchors.tx -channelID historiaclinicaelectronica -asOrg Eps2MSP
+
+configtxgen -profile HistoriaClinicaChannel -outputAnchorPeersUpdate ./channel-artifacts/Eps3MSPanchors.tx -channelID historiaclinicaelectronica -asOrg Eps3MSP
 
 echo '####################################################'
 echo 'CHANNEL_NAME=historiaclinicaelectronica'
