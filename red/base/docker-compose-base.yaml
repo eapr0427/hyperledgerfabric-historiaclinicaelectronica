@@ -72,7 +72,7 @@ services:
       # ---CHANGED--- changed to reflect peer name, org name and our company's domain
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.eps2.historiaclinicaelectronica.com:7051
       # ---CHANGED--- ensure that the MSP ID is correctly set of Org2
-      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_PEER_LOCALMSPID=Eps2MSP
     volumes:
         - /var/run/:/host/var/run/
         # ---CHANGED--- changed to reflect peer name, org name and our company's domain
@@ -101,7 +101,7 @@ services:
       # ---CHANGED--- changed to reflect peer name, org name and our company's domain
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.eps3.historiaclinicaelectronica.com:7051
       # ---CHANGED--- ensure that the MSP ID is correctly set of Org3
-      - CORE_PEER_LOCALMSPID=Org3MSP
+      - CORE_PEER_LOCALMSPID=Eps3MSP
     volumes:
         - /var/run/:/host/var/run/
         # ---CHANGED--- changed to reflect peer name, org name and our company's domain
