@@ -48,16 +48,16 @@
             Policies:
                 Readers:
                     Type: Signature
-                    Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
+                    Rule: "OR('Eps2MSP.admin', 'Eps2MSP.peer', 'Eps2MSP.client')"
                 Writers:
                     Type: Signature
-                    Rule: "OR('Org2MSP.admin', 'Org2MSP.client')"
+                    Rule: "OR('Eps2MSP.admin', 'Eps2MSP.client')"
                 Admins:
                     Type: Signature
-                    Rule: "OR('Org2MSP.admin')"
+                    Rule: "OR('Eps2MSP.admin')"
                 Endorsement:
                     Type: Signature
-                    Rule: "OR('Org2MSP.peer')"
+                    Rule: "OR('Eps2MSP.peer')"
             AnchorPeers:
                 - Host: peer0.eps2.historiaclinicaelectronica.com
                   Port: 7051
@@ -69,16 +69,16 @@
             Policies:
                 Readers:
                     Type: Signature
-                    Rule: "OR('Org3MSP.admin', 'Org3MSP.peer', 'Org3MSP.client')"
+                    Rule: "OR('Eps3MSP.admin', 'Eps3MSP.peer', 'Eps3MSP.client')"
                 Writers:
                     Type: Signature
-                    Rule: "OR('Org3MSP.admin', 'Org3MSP.client')"
+                    Rule: "OR('Eps3MSP.admin', 'Eps3MSP.client')"
                 Admins:
                     Type: Signature
-                    Rule: "OR('Org3MSP.admin')"
+                    Rule: "OR('Eps3MSP.admin')"
                 Endorsement:
                     Type: Signature
-                    Rule: "OR('Org3MSP.peer')"
+                    Rule: "OR('Eps3MSP.peer')"
             AnchorPeers:
                 - Host: peer0.eps3.historiaclinicaelectronica.com
                   Port: 7051
