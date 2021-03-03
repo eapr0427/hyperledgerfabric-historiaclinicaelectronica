@@ -10,6 +10,7 @@ import (
 
 // SmartContract provee funciones para el control de la historia clínica electrónica
 type SmartContract struct {
+	// El contractapi es una API de contratos inteligentes de Fabric para interactuar con el ledger
 	contractapi.Contract
 }
 
@@ -27,14 +28,24 @@ func (s *SmartContract) Store(ctx contractapi.TransactionContextInterface, histo
 
 	//TODO Validaciones de sintaxis
 
-	//TODO validaciones de negocio
+	
 
-	historiaclinica := HealthRecord{
+	//TODO validaciones de negocio HCE
+
+	// TODO Validar que no exista el ID
+	historiaClinicaRecord, err := s.Query(ctx, historiaClinicaId)
+
+	if(historiaClinicaRecord != nil){
+		fmt.Printf("Historia Clínica ya existe: %s", err.Error())
+		return err
+	}
+
+	historiaClinica := HealthRecord{
 		Patient:  patient,
 		Doctor: doctor,
 	}
 
-	hceAsBytes, err := json.Marshal(historiaclinica)
+	hceAsBytes, err := json.Marshal(historiaClinica)
 
 	if err != nil {
 		fmt.Printf("Error en el método Marshal: %s", err.Error())
@@ -46,26 +57,28 @@ func (s *SmartContract) Store(ctx contractapi.TransactionContextInterface, histo
 	return ctx.GetStub().PutState(historiaClinicaId, hceAsBytes)
 }
 
-func (s *SmartContract) Query(ctx contractapi.TransactionContextInterface, foodId string) (*Food, error) {
+func (s *SmartContract) Query(ctx contractapi.TransactionContextInterface, historiaClinicaId string) (*HealthRecord, error) {
 
-	foodAsBytes, err := ctx.GetStub().GetState(foodId)
+	// Consultamos el último estado del mundo en el Ledger asociado a un id
+	hceAsBytes, err := ctx.GetStub().GetState(historiaClinicaId)
 
 	if err != nil {
 		return nil, fmt.Errorf("Failed to read from world state. %s", err.Error())
 	}
 
-	if foodAsBytes == nil {
-		return nil, fmt.Errorf("%s does not exist", foodId)
+	if hceAsBytes == nil {
+		return nil, fmt.Errorf("%s does not exist", historiaClinicaId)
 	}
 
-	food := new(Food)
+	historiaClinica := new(HealthRecord)
 
-	err = json.Unmarshal(foodAsBytes, food)
+	err = json.Unmarshal(hceAsBytes, historiaClinica)
+
 	if err != nil {
 		return nil, fmt.Errorf("Unmarshal error. %s", err.Error())
 	}
 
-	return food, nil
+	return historiaClinica, nil
 }
 
 
@@ -76,6 +89,7 @@ func main() {
 	// Una función puede retornar más de un resultado
 	// NewChaincode devuelve varios valores
 	// Instanciación con :=
+	// INicializamos un chaincode nuevo
 
 	chaincode, err := contractapi.NewChaincode(new(SmartContract))
 
