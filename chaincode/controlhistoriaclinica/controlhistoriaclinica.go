@@ -27,17 +27,15 @@ func (s *SmartContract) Store(ctx contractapi.TransactionContextInterface, histo
 
 	//TODO Validaciones de sintaxis
 
-	
-
 	//TODO validaciones de negocio HCE
 
 	// TODO Validar que no exista el ID
-	historiaClinicaRecord, err := s.Query(ctx, historiaClinicaId)
+	//historiaClinicaRecord, err := s.Query(ctx, historiaClinicaId)
 
-	if(historiaClinicaRecord != nil){
-		fmt.Printf("Historia Clínica ya existe: %s", err.Error())
-		return err
-	}
+	//if(historiaClinicaRecord != nil){
+	//	fmt.Printf("Historia Clínica ya existe: %s", err.Error())
+	//	return err
+	//}
 
 	historiaClinica := HealthRecord{
 		Patient:  patient,
