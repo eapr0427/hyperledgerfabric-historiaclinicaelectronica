@@ -20,7 +20,6 @@ peer lifecycle chaincode package ${CHAINCODE_NAME}.tar.gz --path ${CC_SRC_PATH} 
 
 #2. peer lifecycle chaincode install example
 # Instalación en cada peer del empaquetado (Chaincode)
-#first peer peer0.org1.acme.com
 peer lifecycle chaincode install ${CHAINCODE_NAME}.tar.gz
 #peer lifecycle chaincode install controlhistoriaclinica.tar.gz
 
