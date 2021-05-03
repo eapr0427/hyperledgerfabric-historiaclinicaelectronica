@@ -17,6 +17,7 @@ export ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/orde
 # 1. Empaquetar el chaincode
 peer lifecycle chaincode package ${CHAINCODE_NAME}.tar.gz --path ${CC_SRC_PATH} --lang ${CC_RUNTIME_LANGUAGE} --label ${CHAINCODE_NAME}_${CHAINCODE_VERSION} >&log.txt
 
+#si hay error de mismatch borrar archivo go.sum
 
 #2. peer lifecycle chaincode install example
 # Instalación en cada peer del empaquetado (Chaincode)
@@ -27,7 +28,9 @@ peer lifecycle chaincode install ${CHAINCODE_NAME}.tar.gz
 
 #Chaincode code package identifier: controlhistoriaclinica_1:b3ed006f1fad0e2802a9c062f71bf925bb0124699cf422f1cc6af8d523b6976e
 #Actualizar este  valor con el que obtengan al empaquetar el chaincode: controlhistoriaclinica_1:b3ed006f1fad0e2802a9c062f71bf925bb0124699cf422f1cc6af8d523b6976e
-export CC_PACKAGEID=b3ed006f1fad0e2802a9c062f71bf925bb0124699cf422f1cc6af8d523b6976e
+export CC_PACKAGEID=392001331c8cd0474417bb845fb621ecabcb2a138c2e3342cfbc9caa05fe26d6
+
+
 
 # peer0.org2
 #Instalación Chaincode Organización 2
