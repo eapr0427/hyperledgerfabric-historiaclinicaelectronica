@@ -1,0 +1,57 @@
+test:
+  name: "HCE Benchmarking"
+  description: "Este escenario de benchmark usará un contrato de almacenamiento de HCE"
+  workers:
+    type: local
+    number: 2
+  rounds:
+    - label: Historia Clínica Electrónica - Store
+      description: Test for store patient data in Colombian HCE
+      txNumber: 100
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 50
+      callback: benchmarks/callbacks/historiaclinica/storehce.js
+      arguments:
+        patient: Paciente 1
+        doctor: Doctor de prueba
+        historiaClinicaId: ehr:1
+    - label: Historia Clínica ELectrónica - Query
+      txNumber: 100
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 25
+      callback: benchmarks/callbacks/historiaclinica/queryhce.js
+      arguments:
+        historiaClinicaId: ehr:1
+    #- label: redeem
+    #  txNumber: 1
+    #  rateControl:
+    #    type: fixed-rate
+    #    opts:
+    #      tps: 25
+    #  callback: benchmarks/callbacks/foodcontrol/currency/redeem.js
+    #  arguments:
+observer:
+  type: local
+  interval: 1
+  #type: prometheus
+  #interval: 5
+monitor:
+  interval: 1
+  type: ["docker"]
+  docker:
+    containers: ["all"]
+  #prometheus:
+  #  url: "http://prometheus:9090"
+  #  push_url: "http://pushGateway:9091"
+  #  metrics:
+  #    ignore: [prometheus, pushGateway, cadvisor, grafana, node-exporter]
+  #    include:
+  #      Endorse Time (s):
+  #        query: rate(endorser_propsal_duration_sum{chaincode="foodmarketplace:v1.0"}[5m])/rate(endorser_propsal_duration_count{chaincode="foodmarketplace:v1.0"}[5m])
+  #        step: 1
+  #        label: instance
+  #        statistic: avg
