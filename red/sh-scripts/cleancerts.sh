@@ -3,6 +3,7 @@ function cleanCA(){
     ca=$2
 
     CA_PATH=../fabric-ca/$org/$ca
+    echo "Ubicando carpeta " $CA_PATH
     sudo rm -r $CA_PATH/clients
     sudo rm -r $CA_PATH/msp
     sudo rm $CA_PATH/ca-cert.pem

@@ -6,7 +6,7 @@ docker rm $(docker ps -aq --filter 'name=orderer')
 docker rm $(docker ps -aq --filter 'name=ca')
 docker rm $(docker ps -aq --filter 'name=controlhistoriaclinica')
 docker rmi $(docker images -q --filter 'reference=*controlhistoriaclinica*')
-cd scripts && ./cleancerts.sh
+cd sh-scripts && ./cleancerts.sh
 sudo rm -r ../channel-artifacts/*
 sudo rm -r ../fabric-ca/eps1.historiaclinicaelectronica.com/peers/peer0.eps1.historiaclinicaelectronica.com/production
 sudo rm -r ../fabric-ca/eps2.historiaclinicaelectronica.com/peers/peer0.eps2.historiaclinicaelectronica.com/production

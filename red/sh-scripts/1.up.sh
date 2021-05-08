@@ -1,9 +1,10 @@
-mkdir ./fabric-ca
+#mkdir ./fabric-ca
 
 cd .. && docker-compose -f docker-compose-root-ca.yaml up -d
 sleep 5
-sudo chmod 777 -R ../fabric-ca
-./rootca.sh #### OK
+sudo chmod 777 -R fabric-ca
+
+cd sh-scripts && ./rootca.sh #### OK
 
 cd .. && docker-compose -f docker-compose-int-ca.yaml up -d   ####OK
 sleep 5
@@ -23,3 +24,5 @@ cd sh-scripts && ./intca.sh ####OK
 cd .. && docker-compose -f docker-compose-cli-couchdb.yaml up -d
 sleep 5
 cd sh-scripts && ./channels.sh
+
+MIN 35:44

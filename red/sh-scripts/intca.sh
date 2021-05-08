@@ -18,7 +18,7 @@ fabric-ca-client enroll -u http://admin:adminpw@localhost:8057 --csr.names "$CSR
 
 # EPS 3
 export CSR_NAMES_EPS3="C=CO,ST=Meta,L=Villavivencio,O=Eps3,OU=Hyperledger Fabric"
-# Enroll bootstrap identity of int CA
+# Enroll bootstrap identity of int CA ERROR ERROR ERROR
 export FABRIC_CA_CLIENT_HOME=../fabric-ca/eps3.historiaclinicaelectronica.com/int/clients/admin
 fabric-ca-client enroll -u http://admin:adminpw@localhost:9056 --csr.names "$CSR_NAMES_EPS3"
 # Enroll bootstrap identity of tls int CA
