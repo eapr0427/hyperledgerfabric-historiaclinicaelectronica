@@ -1,87 +1,87 @@
     ################################################################################
     #   Section: Organizations
     ################################################################################
-    Organizations:
-    
-        - &OrdererOrg
-            Name: OrdererOrg
-            ID: OrdererMSP
-            MSPDir: crypto-config/ordererOrganizations/historiaclinicaelectronica.com/msp
-            Policies:
-                Readers:
-                    Type: Signature
-                    Rule: "OR('OrdererMSP.member')"
-                Writers:
-                    Type: Signature
-                    Rule: "OR('OrdererMSP.member')"
-                Admins:
-                    Type: Signature
-                    Rule: "OR('OrdererMSP.admin')"
-            OrdererEndpoints:
-                - orderer.historiaclinicaelectronica.com:7050
-    
+    Organizations:   
         - &Org1
             Name: Eps1MSP
             ID: Eps1MSP
-            MSPDir: crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/msp
+            #MSPDir: crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/msp
+            MSPDir: fabric-ca/eps1.historiaclinicaelectronica.com/msp
             Policies:
                 Readers:
                     Type: Signature
-                    Rule: "OR('Eps1MSP.admin', 'Eps1MSP.peer', 'Eps1MSP.client')"
+                    Rule: "OR('Eps1MSP.admin', 'Eps1MSP.peer', 'Eps1MSP.client', 'Eps1MSP.orderer')"
                 Writers:
                     Type: Signature
-                    Rule: "OR('Eps1MSP.admin', 'Eps1MSP.client')"
+                    Rule: "OR('Eps1MSP.admin', 'Eps1MSP.client', 'Eps1MSP.orderer')"
                 Admins:
                     Type: Signature
                     Rule: "OR('Eps1MSP.admin')"
+                Orderers:
+                    Type: Signature
+                    Rule: "OR('Eps1MSP.orderer')"
                 Endorsement:
                     Type: Signature
                     Rule: "OR('Eps1MSP.peer')"
             AnchorPeers:
                 - Host: peer0.eps1.historiaclinicaelectronica.com
                   Port: 7051
+            OrdererEndpoints:
+            - orderer.eps1.historiaclinicaelectronica.com:7050
     
         - &Org2
             Name: Eps2MSP
             ID: Eps2MSP
-            MSPDir: crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/msp
+            #MSPDir: crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/msp
+            MSPDir: fabric-ca/eps2.historiaclinicaelectronica.com/msp
             Policies:
                 Readers:
                     Type: Signature
-                    Rule: "OR('Eps2MSP.admin', 'Eps2MSP.peer', 'Eps2MSP.client')"
+                    Rule: "OR('Eps2MSP.admin', 'Eps2MSP.peer', 'Eps2MSP.client', 'Eps2MSP.orderer')"
                 Writers:
                     Type: Signature
-                    Rule: "OR('Eps2MSP.admin', 'Eps2MSP.client')"
+                    Rule: "OR('Eps2MSP.admin', 'Eps2MSP.client', 'Eps2MSP.orderer')"
                 Admins:
                     Type: Signature
                     Rule: "OR('Eps2MSP.admin')"
+                Orderers:
+                    Type: Signature
+                    Rule: "OR('Eps2MSP.orderer')"
                 Endorsement:
                     Type: Signature
                     Rule: "OR('Eps2MSP.peer')"
             AnchorPeers:
                 - Host: peer0.eps2.historiaclinicaelectronica.com
                   Port: 7051
+            OrdererEndpoints:
+            - orderer.eps2.historiaclinicaelectronica.com:7050
     
         - &Org3
             Name: Eps3MSP
             ID: Eps3MSP
-            MSPDir: crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/msp
+            #MSPDir: crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/msp
+            MSPDir: fabric-ca/eps3.historiaclinicaelectronica.com/msp
             Policies:
                 Readers:
                     Type: Signature
-                    Rule: "OR('Eps3MSP.admin', 'Eps3MSP.peer', 'Eps3MSP.client')"
+                    Rule: "OR('Eps3MSP.admin', 'Eps3MSP.peer', 'Eps3MSP.client', 'Eps3MSP.orderer')"
                 Writers:
                     Type: Signature
-                    Rule: "OR('Eps3MSP.admin', 'Eps3MSP.client')"
+                    Rule: "OR('Eps3MSP.admin', 'Eps3MSP.client', 'Eps3MSP.orderer')"
                 Admins:
                     Type: Signature
                     Rule: "OR('Eps3MSP.admin')"
+                Orderers:
+                    Type: Signature
+                    Rule: "OR('Eps3MSP.orderer')"
                 Endorsement:
                     Type: Signature
                     Rule: "OR('Eps3MSP.peer')"
             AnchorPeers:
                 - Host: peer0.eps3.historiaclinicaelectronica.com
                   Port: 7051
+            OrdererEndpoints:
+            - orderer.eps3.historiaclinicaelectronica.com:7050
     ################################################################################
     #   SECTION: Capabilities
     ################################################################################
@@ -132,28 +132,36 @@
     ################################################################################
     Orderer: &OrdererDefaults
         # Orderer Type: The orderer implementation to start
-        OrdererType: solo
+        #OrdererType: solo
     
-    #    OrdererType: etcdraft
+        OrdererType: etcdraft
     
         EtcdRaft:
             Consenters:
-            - Host: orderer.historiaclinicaelectronica.com
+            - Host: orderer.eps1.historiaclinicaelectronica.com
               Port: 7050
-              ClientTLSCert: ../organizations/ordererOrganizations/historiaclinicaelectronica.com/orderers/orderer.historiaclinicaelectronica.com/tls/server.crt
-              ServerTLSCert: ../organizations/ordererOrganizations/historiaclinicaelectronica.com/orderers/orderer.historiaclinicaelectronica.com/tls/server.crt
+              ClientTLSCert: fabric-ca/eps1.historiaclinicaelectronica.com/orderers/orderer.eps1.historiaclinicaelectronica.com/tls/server.crt
+              ServerTLSCert: fabric-ca/eps1.historiaclinicaelectronica.com/orderers/orderer.eps1.historiaclinicaelectronica.com/tls/server.crt
+            - Host: orderer.eps2.historiaclinicaelectronica.com
+              Port: 7050
+              ClientTLSCert: fabric-ca/eps2.historiaclinicaelectronica.com/orderers/orderer.eps2.historiaclinicaelectronica.com/tls/server.crt
+              ServerTLSCert: fabric-ca/eps2.historiaclinicaelectronica.com/orderers/orderer.eps2.historiaclinicaelectronica.com/tls/server.crt
+            - Host: orderer.eps3.historiaclinicaelectronica.com
+              Port: 7050
+              ClientTLSCert: fabric-ca/eps3.historiaclinicaelectronica.com/orderers/orderer.eps3.historiaclinicaelectronica.com/tls/server.crt
+              ServerTLSCert: fabric-ca/eps3.historiaclinicaelectronica.com/orderers/orderer.eps3.historiaclinicaelectronica.com/tls/server.crt
     
         Addresses:
-            - orderer.historiaclinicaelectronica.com:7050
+            #- orderer.historiaclinicaelectronica.com:7050
         BatchTimeout: 2s
         BatchSize:
-            MaxMessageCount: 10
-            AbsoluteMaxBytes: 99 MB
-            PreferredMaxBytes: 512 KB
+            MaxMessageCount: 500
+            AbsoluteMaxBytes: 10 MB
+            PreferredMaxBytes: 2 MB
     
-        Kafka:
-            Brokers:
-                - 127.0.0.1:9092
+        #Kafka:
+            #Brokers:
+                #- 127.0.0.1:9092
         Organizations:
     
         Policies:
@@ -170,7 +178,7 @@
             # from the orderer for the peer to validate it.
             BlockValidation:
                 Type: ImplicitMeta
-                Rule: "ANY Writers"
+                Rule: "ANY Orderers"
     
     ################################################################################
     #
@@ -214,7 +222,9 @@
             Orderer:
                 <<: *OrdererDefaults
                 Organizations:
-                    - *OrdererOrg
+                    - *Org1
+                    - *Org2
+                    - *Org3
                 Capabilities:
                     <<: *OrdererCapabilities
             Consortiums:

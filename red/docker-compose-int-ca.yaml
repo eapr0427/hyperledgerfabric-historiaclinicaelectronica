@@ -1,0 +1,76 @@
+version: "2"
+
+networks:
+  historiaclinicabasic:
+services:
+  int.ca.eps1.historiaclinicaelectronica.com:
+    image: hyperledger/fabric-ca:$FABRIC_CA_IMAGE_TAG
+    container_name: int.ca.eps1.historiaclinicaelectronica.com
+    ports:
+      - "7056:7054"
+    volumes:
+      - ./fabric-ca/eps1.historiaclinicaelectronica.com/int:/etc/hyperledger/fabric-ca-server
+    command: >
+      sh -c "fabric-ca-server start -b admin:adminpw -u http://int.ca.eps1.historiaclinicaelectronica.com:password@root.ca.eps1.historiaclinicaelectronica.com:7054"
+    networks:
+      - historiaclinicabasic
+
+  tls.int.ca.eps1.historiaclinicaelectronica.com:
+    image: hyperledger/fabric-ca:$FABRIC_CA_IMAGE_TAG
+    container_name: tls.int.ca.eps1.historiaclinicaelectronica.com
+    ports:
+      - "7057:7054"
+    volumes:
+      - ./fabric-ca/eps1.historiaclinicaelectronica.com/tls-int:/etc/hyperledger/fabric-ca-server
+    command: >
+      sh -c "fabric-ca-server start -b admin:adminpw -u http://tls.int.ca.eps1.historiaclinicaelectronica.com:password@tls.root.ca.eps1.historiaclinicaelectronica.com:7054"
+    networks:
+      - historiaclinicabasic
+
+  int.ca.eps2.historiaclinicaelectronica.com:
+    image: hyperledger/fabric-ca:$FABRIC_CA_IMAGE_TAG
+    container_name: int.ca.eps2.historiaclinicaelectronica.com
+    ports:
+      - "8056:7054"
+    volumes:
+      - ./fabric-ca/eps2.historiaclinicaelectronica.com/int:/etc/hyperledger/fabric-ca-server
+    command: >
+      sh -c "fabric-ca-server start -b admin:adminpw -u http://int.ca.eps2.historiaclinicaelectronica.com:password@root.ca.eps2.historiaclinicaelectronica.com:7054"
+    networks:
+      - historiaclinicabasic
+
+  tls.int.ca.eps2.historiaclinicaelectronica.com:
+    image: hyperledger/fabric-ca:$FABRIC_CA_IMAGE_TAG
+    container_name: tls.int.ca.eps2.historiaclinicaelectronica.com
+    ports:
+      - "8057:7054"
+    volumes:
+      - ./fabric-ca/eps2.historiaclinicaelectronica.com/tls-int:/etc/hyperledger/fabric-ca-server
+    command: >
+      sh -c "fabric-ca-server start -b admin:adminpw -u http://tls.int.ca.eps2.historiaclinicaelectronica.com:password@tls.root.ca.eps2.historiaclinicaelectronica.com:7054"
+    networks:
+      - historiaclinicabasic
+
+  int.ca.eps3.historiaclinicaelectronica.com:
+    image: hyperledger/fabric-ca:$FABRIC_CA_IMAGE_TAG
+    container_name: int.ca.eps3.historiaclinicaelectronica.com
+    ports:
+      - "9056:7054"
+    volumes:
+      - ./fabric-ca/eps3.historiaclinicaelectronica.com/int:/etc/hyperledger/fabric-ca-server
+    command: >
+      sh -c "fabric-ca-server start -b admin:adminpw -u http://int.ca.eps3.historiaclinicaelectronica.com:password@root.ca.eps3.historiaclinicaelectronica.com:7054"
+    networks:
+      - historiaclinicabasic
+
+  tls.int.ca.eps3.historiaclinicaelectronica.com:
+    image: hyperledger/fabric-ca:$FABRIC_CA_IMAGE_TAG
+    container_name: tls.int.ca.eps3.historiaclinicaelectronica.com
+    ports:
+      - "9057:7054"
+    volumes:
+      - ./fabric-ca/eps3.historiaclinicaelectronica.com/tls-int:/etc/hyperledger/fabric-ca-server
+    command: >
+      sh -c "fabric-ca-server start -b admin:adminpw -u http://tls.int.ca.eps3.historiaclinicaelectronica.com:password@tls.root.ca.eps3.historiaclinicaelectronica.com:7054"
+    networks:
+      - historiaclinicabasic

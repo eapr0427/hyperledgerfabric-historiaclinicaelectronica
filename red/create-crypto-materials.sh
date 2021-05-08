@@ -7,7 +7,7 @@ echo 'Recreate crypto config'
 echo '####################################################'
 #cryptogen generate --config=./crypto-config.yaml
 #AHora no vamos a usar vamso a utilizar cryptogen fijo sino que vamos a construir un PKI para las 3 eps
-cryptogen generate --config=./crypto-config.yaml
+#cryptogen generate --config=./crypto-config.yaml
 
 echo '####################################################'
 echo 'Creación de bloque génesis'

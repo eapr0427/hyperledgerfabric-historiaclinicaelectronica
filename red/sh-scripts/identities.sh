@@ -63,7 +63,7 @@ export CSR_NAMES_ORG1="C=CO,ST=Cundinamarca,L=Bogotá,O=Eps1,OU=Hyperledger Fabr
 issueCertificates int 7056 eps1.historiaclinicaelectronica.com admin@eps1.historiaclinicaelectronica.com adminpw admin "$CSR_NAMES_ORG1" ""
 issueTLSCertificates tls-int 7057 eps1.historiaclinicaelectronica.com admin@eps1.historiaclinicaelectronica.com adminpw admin "$CSR_NAMES_ORG1" "admin@eps1.historiaclinicaelectronica.com,localhost"
 # issue certificates for client identity and for client tls
-issueCertificatesWithAffiliation int 7056 eps1.historiaclinicaelectronica.com client@eps1.historiaclinicaelectronica.com clientpw client marketplace "$CSR_NAMES_ORG1" ""
+issueCertificatesWithAffiliation int 7056 eps1.historiaclinicaelectronica.com client@eps1.historiaclinicaelectronica.com clientpw client historiaclinicaelectronica "$CSR_NAMES_ORG1" ""
 issueTLSCertificates tls-int 7057 eps1.historiaclinicaelectronica.com client@eps1.historiaclinicaelectronica.com clientpw client "$CSR_NAMES_ORG1" "client@eps1.historiaclinicaelectronica.com,localhost"
 # issue certificates for peer node identity and for peer server tls
 issueCertificates int 7056 eps1.historiaclinicaelectronica.com peer0.eps1.historiaclinicaelectronica.com peerpw peer "$CSR_NAMES_ORG1" ""
@@ -78,7 +78,7 @@ export CSR_NAMES_ORG2="C=CO,ST=Valle del Cauca,L=Cali,O=Eps2,OU=Hyperledger Fabr
 issueCertificates int 8056 eps2.historiaclinicaelectronica.com admin@eps2.historiaclinicaelectronica.com adminpw admin "$CSR_NAMES_ORG2" ""
 issueTLSCertificates tls-int 8057 eps2.historiaclinicaelectronica.com admin@eps2.historiaclinicaelectronica.com adminpw admin "$CSR_NAMES_ORG2" "admin@eps2.historiaclinicaelectronica.com,localhost"
 # issue certificates for client identity and for client tls
-issueCertificatesWithAffiliation int 8056 eps2.historiaclinicaelectronica.com client@eps2.historiaclinicaelectronica.com clientpw client marketplace "$CSR_NAMES_ORG2" ""
+issueCertificatesWithAffiliation int 8056 eps2.historiaclinicaelectronica.com client@eps2.historiaclinicaelectronica.com clientpw client historiaclinicaelectronica "$CSR_NAMES_ORG2" ""
 issueTLSCertificates tls-int 8057 eps2.historiaclinicaelectronica.com client@eps2.historiaclinicaelectronica.com clientpw client "$CSR_NAMES_ORG2" "client@eps2.historiaclinicaelectronica.com,localhost"
 # issue certificates for peer node identity and for peer server tls
 issueCertificates int 8056 eps2.historiaclinicaelectronica.com peer0.eps2.historiaclinicaelectronica.com peerpw peer "$CSR_NAMES_ORG2" ""
@@ -93,7 +93,7 @@ export CSR_NAMES_ORG3="C=CO,ST=Meta,L=Villavivencio,O=Eps3,OU=Hyperledger Fabric
 issueCertificates int 9056 eps3.historiaclinicaelectronica.com admin@eps3.historiaclinicaelectronica.com adminpw admin "$CSR_NAMES_ORG3" ""
 issueTLSCertificates tls-int 9057 eps3.historiaclinicaelectronica.com admin@eps3.historiaclinicaelectronica.com adminpw admin "$CSR_NAMES_ORG3" "admin@eps3.historiaclinicaelectronica.com,localhost"
 # issue certificates for client identity and for client tls
-issueCertificatesWithAffiliation int 9056 eps3.historiaclinicaelectronica.com client@eps3.historiaclinicaelectronica.com clientpw client marketplace "$CSR_NAMES_ORG3" ""
+issueCertificatesWithAffiliation int 9056 eps3.historiaclinicaelectronica.com client@eps3.historiaclinicaelectronica.com clientpw client historiaclinicaelectronica "$CSR_NAMES_ORG3" ""
 issueTLSCertificates tls-int 9057 eps3.historiaclinicaelectronica.com client@eps3.historiaclinicaelectronica.com clientpw client "$CSR_NAMES_ORG3" "client@eps3.historiaclinicaelectronica.com,localhost"
 # issue certificates for peer node identity and for peer server tls
 issueCertificates int 9056 eps3.historiaclinicaelectronica.com peer0.eps3.historiaclinicaelectronica.com peerpw peer "$CSR_NAMES_ORG3"

@@ -65,7 +65,7 @@ clients:
       connection:
         timeout:
           peer:
-            endorser: "300"
+            endorser: "800"
       credentialStore:
         path: tmp/hfc-kvs/eps1
         cryptoStore:
