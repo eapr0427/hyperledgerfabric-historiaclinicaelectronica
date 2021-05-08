@@ -314,8 +314,8 @@ csr:
      size: 256
    names:
       - C: CO
-        ST: "Meta"
-        L: "Villavivencio"
+        ST: Meta
+        L: Villavivencio
         O: Eps3
         OU: "Hyperledger Fabric"
    hosts:

@@ -83,10 +83,10 @@ tls:
 #  The chainfile (if it exists) contains the certificate chain which
 #  should be trusted for this CA, where the 1st in the chain is always the
 #  root CA certificate.
-#############################################################################
-ca: int.ca.eps3.historiaclinicaelectronica.com
+##############################int.ca.eps3.historiaclinicaelectronica.com###############################################
+ca:
   # Name of this CA
-  name:
+  name: int.ca.eps3.historiaclinicaelectronica.com
   # Key file (is only used to import a private key into BCCSP)
   keyfile:
   # Certificate file (default: ca-cert.pem)
@@ -314,8 +314,8 @@ csr:
      size: 256
    names:
       - C: CO
-        ST: "Meta"
-        L: "Villavivencio"
+        ST: Meta
+        L: Villavivencio
         O: Eps3
         OU: "Hyperledger Fabric"
    hosts:

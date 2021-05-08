@@ -86,7 +86,7 @@ tls:
 #############################################################################
 ca:
   # Name of this CA
-  name: tls.int.ca.eps2.historiaclinicaelectronica.com
+  name: tls.int.ca.eps3.historiaclinicaelectronica.com
   # Key file (is only used to import a private key into BCCSP)
   keyfile:
   # Certificate file (default: ca-cert.pem)
@@ -313,8 +313,8 @@ csr:
      size: 256
    names:
       - C: CO
-        ST: "Meta"
-        L: "Villavivencio"
+        ST: Meta
+        L: Villavivencio
         O: Eps3
         OU: "Hyperledger Fabric"
    hosts:
