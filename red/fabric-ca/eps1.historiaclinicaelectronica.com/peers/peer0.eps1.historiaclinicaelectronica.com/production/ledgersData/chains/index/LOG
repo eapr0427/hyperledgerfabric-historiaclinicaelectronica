@@ -1,0 +1,6 @@
+=============== May 9, 2021 (UTC) ===============
+22:40:55.072025 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+22:40:55.075247 db@open opening
+22:40:55.075475 version@stat F·[] S·0B[] Sc·[]
+22:40:55.079274 db@janitor F·2 G·0
+22:40:55.079288 db@open done T·4.027793ms
