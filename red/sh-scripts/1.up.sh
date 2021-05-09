@@ -10,7 +10,7 @@ cd .. && docker-compose -f docker-compose-int-ca.yaml up -d   ####OK
 sleep 5
 
 sudo chmod 777 -R fabric-ca ####OK
-
+sleep 5
 cd sh-scripts && ./intca.sh ####OK
 
 # OK
