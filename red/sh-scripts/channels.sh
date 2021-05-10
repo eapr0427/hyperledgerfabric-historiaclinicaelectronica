@@ -9,7 +9,9 @@ function joinChannel() {
   export CORE_PEER_TLS_ENABLED=true
   export CORE_PEER_TLS_ROOTCERT_FILE=$(cd ../ && echo $PWD/fabric-ca/$org/peers/$peerName/tls/ca.crt)
   export CORE_PEER_MSPCONFIGPATH=$(cd ../ && echo $PWD/fabric-ca/$org/users/admin@$org/msp)
-  peer channel join -b ../channel-artifacts/genesis.block
+  #peer channel join -b ../channel-artifacts/genesis.block
+
+  peer channel join -b ../channel-artifacts/historiaclinicaelectronica.genesis.block
 }
 
 function updateChannelWithAnchorTx() {
