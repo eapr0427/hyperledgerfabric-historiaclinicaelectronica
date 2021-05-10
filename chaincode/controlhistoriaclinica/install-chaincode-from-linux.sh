@@ -18,7 +18,7 @@ peer lifecycle chaincode package ../../red/channel-artifacts/$CC_NAME$CC_VERSION
 peer lifecycle chaincode install ../../red/channel-artifacts/$CC_NAME$CC_VERSION.tar.gz --peerAddresses $CORE_PEER_ADDRESS --tls $CORE_PEER_TLS_ENABLED --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
 
 export CC_PACKAGE_ID=controlhistoriaclinica_1:6dd12ed48f03193d7f56be97e2bde36ee6654571d94f53c532d3435ccc85a553
-peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence $CC_SEQUENCE --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS --collections-config collections.json --signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')"
+peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence 1 --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS --signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')"
 
 
 export CORE_PEER_ADDRESS=localhost:8051
@@ -28,7 +28,7 @@ export CORE_PEER_MSPCONFIGPATH=$(cd ../../acme-network && echo $PWD/fabric-ca/or
 export ORDERER_CA=$(cd ../../acme-network && echo $PWD/fabric-ca/org2.acme.com/orderers/orderer.org2.acme.com/tls/ca.crt)
 export ORDERER_ADDRESS=localhost:8050
 peer lifecycle chaincode install ../../acme-network/channel-artifacts/$CC_NAME$CC_VERSION.tar.gz --peerAddresses $CORE_PEER_ADDRESS --tls $CORE_PEER_TLS_ENABLED --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
-peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence $CC_SEQUENCE --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS --collections-config collections.json --signature-policy "OUTOF(2, 'Org1MSP.peer','Org2MSP.peer','Org3MSP.peer')"
+peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence $CC_SEQUENCE --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS --signature-policy "OUTOF(2, 'Org1MSP.peer','Org2MSP.peer','Org3MSP.peer')" #--collections-config collections.json
 
 export CORE_PEER_ADDRESS=localhost:9051
 export CORE_PEER_LOCALMSPID=Org3MSP
