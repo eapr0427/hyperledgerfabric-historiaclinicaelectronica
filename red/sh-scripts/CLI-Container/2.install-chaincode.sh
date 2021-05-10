@@ -4,7 +4,13 @@ export CHAINCODE_VERSION=1
 export CC_RUNTIME_LANGUAGE=golang
 # CC_SRC_PATH es la ruta al chaincode
 export CC_SRC_PATH="../../../chaincode/$CHAINCODE_NAME/"
-export ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/historiaclinicaelectronica.com/msp/tlscacerts/tlsca.historiaclinicaelectronica.com-cert.pem
+export CC_VERSION=v1.0
+#export ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/historiaclinicaelectronica.com/msp/tlscacerts/tlsca.historiaclinicaelectronica.com-cert.pem
+export ORDERER_CA=$PWD/crypto/eps1.historiaclinicaelectronica.com/orderers/orderer.eps1.historiaclinicaelectronica.com/tls/ca.crt
+export CORE_PEER_ADDRESS=peer0.eps1.historiaclinicaelectronica.com:7051
+export CORE_PEER_TLS_ENABLED=true
+export CORE_PEER_TLS_ROOTCERT_FILE=$PWD/crypto/eps1.historiaclinicaelectronica.com/peers/peer0.eps1.historiaclinicaelectronica.com/tls/ca.crt
+
 
 #Descarga dependencias
 #export FABRIC_CFG_PATH=$PWD/configtx
@@ -14,21 +20,25 @@ export ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/orde
 
 #CICLO DE VIDA DEL CHAINCODE
 
+#RUTA: /opt/gopath/src/github.com/hyperledger/fabric/peer
+
 # 1. Empaquetar el chaincode
+
 peer lifecycle chaincode package ${CHAINCODE_NAME}.tar.gz --path ${CC_SRC_PATH} --lang ${CC_RUNTIME_LANGUAGE} --label ${CHAINCODE_NAME}_${CHAINCODE_VERSION} >&log.txt
 
-#si hay error de mismatch borrar archivo go.sum
+#si hay error de mismatch borrar archivo go.sum - SESION 5 MInuto 1:22:13
 
 #2. peer lifecycle chaincode install example
-# Instalación en cada peer del empaquetado (Chaincode)
-peer lifecycle chaincode install ${CHAINCODE_NAME}.tar.gz
+# Instalación en cada peer del empaquetado (Chaincode) - SESION 5 MInuto 1:30:52
+#peer lifecycle chaincode install ${CHAINCODE_NAME}.tar.gz
+#Bram credenciales peer0 eps 1
+peer lifecycle chaincode install $CHAINCODE_NAME.tar.gz --peerAddresses $CORE_PEER_ADDRESS --tls $CORE_PEER_TLS_ENABLED --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
+
 #peer lifecycle chaincode install controlhistoriaclinica.tar.gz
-
-
 
 #Chaincode code package identifier: controlhistoriaclinica_1:b3ed006f1fad0e2802a9c062f71bf925bb0124699cf422f1cc6af8d523b6976e
 #Actualizar este  valor con el que obtengan al empaquetar el chaincode: controlhistoriaclinica_1:b3ed006f1fad0e2802a9c062f71bf925bb0124699cf422f1cc6af8d523b6976e
-export CC_PACKAGEID=392001331c8cd0474417bb845fb621ecabcb2a138c2e3342cfbc9caa05fe26d6
+export CC_PACKAGEID=6dd12ed48f03193d7f56be97e2bde36ee6654571d94f53c532d3435ccc85a553
 
 
 
@@ -47,6 +57,10 @@ CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypt
 #Aprobación para primera organización
 
 peer lifecycle chaincode approveformyorg --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CHAINCODE_NAME --version $CHAINCODE_VERSION --sequence 1 --waitForEvent --signature-policy "OR ('Eps1MSP.peer', 'Eps3MSP.peer')" --package-id controlhistoriaclinica_1:$CC_PACKAGEID
+
+
+peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence $CC_SEQUENCE --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS --collections-config collections.json --signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')"
+
 
 
 #Aprobación para tercera organización

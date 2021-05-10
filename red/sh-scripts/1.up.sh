@@ -23,6 +23,5 @@ cd sh-scripts && ./intca.sh ####OK
 ./artifacts.sh
 cd .. && docker-compose -f docker-compose-cli-couchdb.yaml up -d
 sleep 5
-cd sh-scripts && ./channels.sh
+cd sh-scripts && ./channels.sh #video 8 MIn 1:17:09
 
-MIN 35:44
