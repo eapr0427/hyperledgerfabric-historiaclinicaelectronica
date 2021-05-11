@@ -106,7 +106,7 @@ services:
       # ---CHANGED--- ensure that the MSP ID is correctly set of Eps2
       - CORE_PEER_LOCALMSPID=Eps2MSP
     volumes:
-        # - /var/run/:/host/var/run/
+        - /var/run/:/host/var/run/
         # # ---CHANGED--- changed to reflect peer name, org name and our company's domain
         # - ../crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/peers/peer0.eps2.historiaclinicaelectronica.com/msp:/etc/hyperledger/fabric/msp
         # # ---CHANGED--- changed to reflect peer name, org name and our company's domain
