@@ -1,0 +1,2 @@
+Error: error getting chaincode bytes: 'go list' failed with: can't load package: package ../../../chaincode/controlhistoriaclinica: cannot find package "../../../chaincode/controlhistoriaclinica" in:
+	/home/andrespineda/chaincode/controlhistoriaclinica: exit status 1
