@@ -5,16 +5,21 @@ export CHAINCODE_NAME=controlhistoriaclinica
 export CHAINCODE_VERSION=1
 export CC_RUNTIME_LANGUAGE=golang
 # CC_SRC_PATH es la ruta al chaincode
-export CC_SRC_PATH="../../../chaincode/$CHAINCODE_NAME/"
+export CC_SRC_PATH="../../chaincode/$CHAINCODE_NAME/"
 export CC_VERSION=v1.0
 #export ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/historiaclinicaelectronica.com/msp/tlscacerts/tlsca.historiaclinicaelectronica.com-cert.pem
 export ORDERER_CA=$PWD/crypto/eps1.historiaclinicaelectronica.com/orderers/orderer.eps1.historiaclinicaelectronica.com/tls/ca.crt
 export CORE_PEER_ADDRESS=peer0.eps1.historiaclinicaelectronica.com:7051
 export CORE_PEER_TLS_ENABLED=true
 export CORE_PEER_TLS_ROOTCERT_FILE=$PWD/crypto/eps1.historiaclinicaelectronica.com/peers/peer0.eps1.historiaclinicaelectronica.com/tls/ca.crt
+#export CORE_PEER_TLS_ROOTCERT_FILE=$(cd ../../red && echo $PWD/fabric-ca/eps1.historiaclinicaelectronica.com/peers/peer0.eps1.historiaclinicaelectronica.com/tls/ca.crt)
+
 export CORE_PEER_MSPCONFIGPATH=$PWD/crypto/eps1.historiaclinicaelectronica.com/users/admin@eps1.historiaclinicaelectronica.com/msp
+#export CORE_PEER_MSPCONFIGPATH=$(cd ../../red && echo $PWD/fabric-ca/eps1.historiaclinicaelectronica.com/users/admin@eps1.historiaclinicaelectronica.com/msp)
+
 export CC_SEQUENCE=1
 export ORDERER_ADDRESS=orderer.eps1.historiaclinicaelectronica.com:7050
+
 
 #Descarga dependencias
 #export FABRIC_CFG_PATH=$PWD/configtx
@@ -51,25 +56,25 @@ peer lifecycle chaincode checkcommitreadiness --channelID $CHANNEL_NAME --name $
  
 
 # EPS2
+#host linux ruta de ejecucion de los comandos: ~/hyperledgerfabric-historiaclinicaelectronica/red/channel-artifacts
 
-#export CORE_PEER_ADDRESS=localhost:8051
+export CORE_PEER_ADDRESS=localhost:8051
 #export CORE_PEER_ADDRESS=peer0.eps2.historiaclinicaelectronica.com:8051
-export CORE_PEER_ADDRESS=peer0.eps2.historiaclinicaelectronica.com:7051
+#export CORE_PEER_ADDRESS=peer0.eps2.historiaclinicaelectronica.com:7051
 export CORE_PEER_LOCALMSPID=Eps2MSP
-#export CORE_PEER_TLS_ROOTCERT_FILE=$(cd ../../acme-network && echo $PWD/fabric-ca/org2.acme.com/peers/peer0.org2.acme.com/tls/ca.crt)
-export CORE_PEER_TLS_ROOTCERT_FILE=$PWD/crypto/eps2.historiaclinicaelectronica.com/peers/peer0.eps2.historiaclinicaelectronica.com/tls/ca.crt
-#export CORE_PEER_MSPCONFIGPATH=$(cd ../../acme-network && echo $PWD/fabric-ca/org2.acme.com/users/admin@org2.acme.com/msp)
-export CORE_PEER_MSPCONFIGPATH=$PWD/crypto/eps2.historiaclinicaelectronica.com/users/admin@eps2.historiaclinicaelectronica.com/msp
+export CORE_PEER_TLS_ROOTCERT_FILE=$(cd ../../red && echo $PWD/fabric-ca/eps2.historiaclinicaelectronica.com/peers/peer0.eps2.historiaclinicaelectronica.com/tls/ca.crt)
+#export CORE_PEER_TLS_ROOTCERT_FILE=$PWD/crypto/eps2.historiaclinicaelectronica.com/peers/peer0.eps2.historiaclinicaelectronica.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH=$(cd ../../red && echo $PWD/fabric-ca/eps2.historiaclinicaelectronica.com/users/admin@eps2.historiaclinicaelectronica.com/msp)
+#export CORE_PEER_MSPCONFIGPATH=$PWD/crypto/eps2.historiaclinicaelectronica.com/users/admin@eps2.historiaclinicaelectronica.com/msp
 #CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/eps2.historiaclinicaelectronica.com/users/Admin@eps2.historiaclinicaelectronica.com/msp/ CORE_PEER_ADDRESS=peer0.eps2.historiaclinicaelectronica.com:7051 CORE_PEER_LOCALMSPID="Eps2MSP" CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/eps2.historiaclinicaelectronica.com/peers/peer0.eps2.historiaclinicaelectronica.com/tls/ca.crt peer lifecycle chaincode install ${CHAINCODE_NAME}.tar.gz
-#export ORDERER_CA=$(cd ../../acme-network && echo $PWD/fabric-ca/org2.acme.com/orderers/orderer.org2.acme.com/tls/ca.crt)
-export ORDERER_CA=$PWD/crypto/eps2.historiaclinicaelectronica.com/orderers/orderer.eps2.historiaclinicaelectronica.com/tls/ca.crt
-#export ORDERER_ADDRESS=localhost:8050
+export ORDERER_CA=$(cd ../../red && echo $PWD/fabric-ca/org2.acme.com/orderers/orderer.org2.acme.com/tls/ca.crt)
+#export ORDERER_CA=$PWD/crypto/eps2.historiaclinicaelectronica.com/orderers/orderer.eps2.historiaclinicaelectronica.com/tls/ca.crt
+export ORDERER_ADDRESS=localhost:8050
 #export ORDERER_ADDRESS=orderer.eps2.historiaclinicaelectronica.com:8050
-export ORDERER_ADDRESS=orderer.eps2.historiaclinicaelectronica.com:7050
+#export ORDERER_ADDRESS=orderer.eps2.historiaclinicaelectronica.com:7050
 
 #peer lifecycle chaincode install ../../acme-network/channel-artifacts/$CC_NAME$CC_VERSION.tar.gz --peerAddresses $CORE_PEER_ADDRESS --tls $CORE_PEER_TLS_ENABLED --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
 peer lifecycle chaincode install $CHAINCODE_NAME.tar.gz --peerAddresses $CORE_PEER_ADDRESS --tls $CORE_PEER_TLS_ENABLED --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
-
 #peer lifecycle chaincode install $CHAINCODE_NAME.tar.gz --peerAddresses $CORE_PEER_ADDRESS --tls $CORE_PEER_TLS_ENABLED --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
 
 
