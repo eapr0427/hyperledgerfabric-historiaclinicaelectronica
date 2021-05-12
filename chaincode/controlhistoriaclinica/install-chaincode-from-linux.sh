@@ -20,9 +20,9 @@ peer lifecycle chaincode package ../../red/channel-artifacts/$CC_NAME$CC_VERSION
 peer lifecycle chaincode install ../../red/channel-artifacts/$CC_NAME$CC_VERSION.tar.gz --peerAddresses $CORE_PEER_ADDRESS --tls $CORE_PEER_TLS_ENABLED --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
 
 ###iMPORTANTE esto debe ir al inicio: controlhistoriaclinicav1.0
-export CC_PACKAGE_ID=controlhistoriaclinicav1.0:773eaaaf038c40732794c80fcaa37393786a478566b84e4a5615393f12033f02
+export CC_PACKAGE_ID=controlhistoriaclinicav1.0:49e6146e1fe32b679cad6ce484075f4600f8f672fa61324c33a0a1a657b28108
 
-peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence 1 --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS --signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')"
+peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence 1 --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS #--signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')"
 
 
 export CORE_PEER_ADDRESS=localhost:8051
@@ -32,7 +32,7 @@ export CORE_PEER_MSPCONFIGPATH=$(cd ../../red && echo $PWD/fabric-ca/eps2.histor
 export ORDERER_CA=$(cd ../../red && echo $PWD/fabric-ca/eps2.historiaclinicaelectronica.com/orderers/orderer.eps2.historiaclinicaelectronica.com/tls/ca.crt)
 export ORDERER_ADDRESS=localhost:8050
 peer lifecycle chaincode install ../../red/channel-artifacts/$CC_NAME$CC_VERSION.tar.gz --peerAddresses $CORE_PEER_ADDRESS --tls $CORE_PEER_TLS_ENABLED --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
-peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence $CC_SEQUENCE --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS --signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')" #--collections-config collections.json
+peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence $CC_SEQUENCE --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS #--signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')" #--collections-config collections.json
 
 export CORE_PEER_ADDRESS=localhost:9051
 export CORE_PEER_LOCALMSPID=Eps3MSP
@@ -41,8 +41,8 @@ export CORE_PEER_MSPCONFIGPATH=$(cd ../../red && echo $PWD/fabric-ca/eps3.histor
 export ORDERER_CA=$(cd ../../red && echo $PWD/fabric-ca/eps3.historiaclinicaelectronica.com/orderers/orderer.eps3.historiaclinicaelectronica.com/tls/ca.crt)
 export ORDERER_ADDRESS=localhost:9050
 peer lifecycle chaincode install ../../red/channel-artifacts/$CC_NAME$CC_VERSION.tar.gz --peerAddresses $CORE_PEER_ADDRESS --tls $CORE_PEER_TLS_ENABLED --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE
-peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence $CC_SEQUENCE --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS --signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')" #--collections-config collections.json 
-peer lifecycle chaincode commit -o $ORDERER_ADDRESS --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --sequence $CC_SEQUENCE --tls --cafile $ORDERER_CA --peerAddresses $CORE_PEER_ADDRESS --peerAddresses localhost:7051 --peerAddresses localhost:8051 --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --tlsRootCertFiles $(cd ../../red && echo $PWD/fabric-ca/eps1.historiaclinicaelectronica.com/peers/peer0.eps1.historiaclinicaelectronica.com/tls/ca.crt) --tlsRootCertFiles $(cd ../../red && echo $PWD/fabric-ca/eps2.historiaclinicaelectronica.com/peers/peer0.eps2.historiaclinicaelectronica.com/tls/ca.crt) --signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')" #--collections-config collections.json
+peer lifecycle chaincode approveformyorg -o $ORDERER_ADDRESS --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --package-id $CC_PACKAGE_ID --sequence $CC_SEQUENCE --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --peerAddresses $CORE_PEER_ADDRESS #--signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')" #--collections-config collections.json 
+peer lifecycle chaincode commit -o $ORDERER_ADDRESS --channelID $CHANNEL_NAME --name $CC_NAME --version $CC_VERSION --sequence $CC_SEQUENCE --tls --cafile $ORDERER_CA --peerAddresses $CORE_PEER_ADDRESS --peerAddresses localhost:7051 --peerAddresses localhost:8051 --tlsRootCertFiles $CORE_PEER_TLS_ROOTCERT_FILE --tlsRootCertFiles $(cd ../../red && echo $PWD/fabric-ca/eps1.historiaclinicaelectronica.com/peers/peer0.eps1.historiaclinicaelectronica.com/tls/ca.crt) --tlsRootCertFiles $(cd ../../red && echo $PWD/fabric-ca/eps2.historiaclinicaelectronica.com/peers/peer0.eps2.historiaclinicaelectronica.com/tls/ca.crt) #--signature-policy "OUTOF(2, 'Eps1MSP.peer','Eps2MSP.peer','Eps3MSP.peer')" #--collections-config collections.json
 
 
 peer lifecycle chaincode querycommitted --channelID $CHANNEL_NAME --name $CC_NAME --output json

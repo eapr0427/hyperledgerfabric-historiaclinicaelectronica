@@ -3,29 +3,32 @@ test:
   description: "Este escenario de benchmark usará un contrato de almacenamiento de HCE"
   workers:
     type: local
-    number: 2
+    number: 3
   rounds:
     - label: Historia Clínica Electrónica - Store
       description: Test for store patient data in Colombian HCE
-      txNumber: 100
+      txNumber: 1000
       rateControl:
         type: fixed-rate
         opts:
-          tps: 50
-      callback: benchmarks/callbacks/historiaclinica/storehce.js
+          tps: 20
+      # callback: benchmarks/callbacks/historiaclinica/storehce.js
+      workload:
+        module: benchmarks/callbacks/historiaclinica/storehcev2.js
       arguments:
         patient: Paciente 1
         doctor: Doctor de prueba
-        historiaClinicaId: ehr:1
-    - label: Historia Clínica ELectrónica - Query
-      txNumber: 100
-      rateControl:
-        type: fixed-rate
-        opts:
-          tps: 25
-      callback: benchmarks/callbacks/historiaclinica/queryhce.js
-      arguments:
-        historiaClinicaId: ehr:1
+        historiaClinicaId: ehr:10
+    # - label: Historia Clínica ELectrónica - Query
+    #   txNumber: 1
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 25
+      # callback: benchmarks/callbacks/historiaclinica/queryhce.js
+      # workload: benchmarks/callbacks/historiaclinica/queryhce.js
+      # arguments:
+      #   historiaClinicaId: ehr:1
 observer:
   type: local
   interval: 1

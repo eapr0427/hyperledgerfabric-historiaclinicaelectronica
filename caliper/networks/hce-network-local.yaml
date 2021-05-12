@@ -54,10 +54,11 @@ channels:
       peer0.eps3.historiaclinicaelectronica.com:
         eventSource: true
     created: true
-    chaincodes:
-      - id: controlhistoriaclinica
-        version: v2.0
-        language: golang
+    # chaincodes:
+    #   - id: controlhistoriaclinica
+    #     version: v2.0
+    #     language: golang
+    contracts: [{ "id": "controlhistoriaclinica", "version": "1" }]
 clients:
   client@eps1.historiaclinicaelectronica.com:
     client:

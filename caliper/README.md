@@ -1,21 +1,29 @@
 # Caliper setup with NPMS
 
 npm init -y
-npm install --only=prod @hyperledger/caliper-cli@0.3.2
-npx caliper bind --caliper-bind-sut fabric:latest-v2 --caliper-bind-sdk latest-v2 --caliper-fabric-gateway-usegateway --caliper-flow-only-test
+<!-- npm install --only=prod @hyperledger/caliper-cli@0.3.2 -->
+npm install --only=prod @hyperledger/caliper-cli@0.4.1
+
+npx caliper bind --caliper-bind-sut fabric:2.1.0 --caliper-bind-sdk 2.1.0 --caliper-fabric-gateway-usegateway --caliper-flow-only-test
 
 # Launch Caliper master
 
-npx caliper launch master \
+npx caliper launch manager \
     --caliper-workspace . \
     --caliper-benchconfig benchmarks/scenario/hce-lifecycle/config.yaml \
     --caliper-networkconfig networks/hce-network-local.yaml \
     --caliper-flow-only-test \
     --caliper-fabric-gateway-usegateway \
-     --caliper-fabric-gateway-discovery
+    --caliper-fabric-gateway-discovery \
+    --caliper-fabric-gateway-enabled
 
-     No CA provided for org Eps1; unable to enrol users
-     No admin.Eps1 found in caliper configuration file - unable to perform admin options
+
+<!-- npx caliper launch manager \
+    --caliper-workspace . \
+    --caliper-benchconfig benchmarks/scenario/hce-lifecycle/config.yaml \
+    --caliper-networkconfig networks/hce-network-local.yaml \
+    --caliper-fabric-gateway-enabled -->
+
 
      QUEDAMOS AQUI VIDEO https://www.youtube.com/watch?v=ypF36RGaG1Q MINUTO 14:27
 
