@@ -11,11 +11,11 @@ organizations:
     # certificateAuthorities:
     #   - ca.eps1.historiaclinicaelectronica.com
     adminPrivateKey:
-      path: ../red/crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/users/Admin@eps1.historiaclinicaelectronica.com/msp/keystore/priv_sk
-      #path: ../acme-network/fabric-ca/org1.acme.com/users/admin@org1.acme.com/msp/keystore/priv.key
+      #path: ../red/crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/users/Admin@eps1.historiaclinicaelectronica.com/msp/keystore/priv_sk
+      path: ../red/fabric-ca/eps1.historiaclinicaelectronica.com/users/admin@eps1.historiaclinicaelectronica.com/msp/keystore/priv.key
     signedCert:
-      #path: ../acme-network/fabric-ca/org1.acme.com/users/admin@org1.acme.com/msp/signcerts/cert.pem
-      path: ../red/crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/users/Admin@eps1.historiaclinicaelectronica.com/msp/signcerts/cert.pem
+      path: ../red/fabric-ca/eps1.historiaclinicaelectronica.com/users/admin@eps1.historiaclinicaelectronica.com/msp/signcerts/cert.pem
+      #path: ../red/crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/users/Admin@eps1.historiaclinicaelectronica.com/msp/signcerts/cert.pem
   Eps2:
     mspid: Eps2MSP
     peers:
@@ -23,11 +23,11 @@ organizations:
     # certificateAuthorities:
     #   - ca.eps2.historiaclinicaelectronica.com
     adminPrivateKey:
-      #path: ../acme-network/fabric-ca/org2.acme.com/users/admin@org2.acme.com/msp/keystore/priv.key
-      path: ../red/crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/users/Admin@eps2.historiaclinicaelectronica.com/msp/keystore/priv_sk
+      path: ../red/fabric-ca/eps2.historiaclinicaelectronica.com/users/admin@eps2.historiaclinicaelectronica.com/msp/keystore/priv.key
+      #path: ../red/crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/users/Admin@eps2.historiaclinicaelectronica.com/msp/keystore/priv_sk
     signedCert: 
-      #path: ../acme-network/fabric-ca/org2.acme.com/users/admin@org2.acme.com/msp/signcerts/cert.pem
-      path: ../red/crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/users/Admin@eps2.historiaclinicaelectronica.com/msp/signcerts/cert.pem
+      path: ../red/fabric-ca/eps2.historiaclinicaelectronica.com/users/admin@eps2.historiaclinicaelectronica.com/msp/signcerts/cert.pem
+      #path: ../red/crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/users/Admin@eps2.historiaclinicaelectronica.com/msp/signcerts/cert.pem
   Eps3:
     mspid: Eps3MSP
     peers:
@@ -35,17 +35,17 @@ organizations:
     # certificateAuthorities:
     #   - ca.eps3.historiaclinicaelectronica.com
     adminPrivateKey:
-      #path: ../acme-network/fabric-ca/org3.acme.com/users/admin@3.acme.com/msp/keystore/priv.key
-      path: ../red/crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/users/Admin@eps3.historiaclinicaelectronica.com/msp/keystore/priv_sk
+      path: ../red/fabric-ca/eps3.historiaclinicaelectronica.com/users/admin@eps3.historiaclinicaelectronica.com/msp/keystore/priv.key
+      #path: ../red/crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/users/Admin@eps3.historiaclinicaelectronica.com/msp/keystore/priv_sk
     signedCert:
-      #path: ../acme-network/fabric-ca/org3.acme.com/users/admin@org3.acme.com/msp/signcerts/cert.pem
-      path: ../red/crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/users/Admin@eps3.historiaclinicaelectronica.com/msp/signcerts/cert.pem
+      path: ../red/fabric-ca/eps3.historiaclinicaelectronica.com/users/admin@eps3.historiaclinicaelectronica.com/msp/signcerts/cert.pem
+      #path: ../red/crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/users/Admin@eps3.historiaclinicaelectronica.com/msp/signcerts/cert.pem
 channels:
   historiaclinicaelectronica:
     orderers:
-      - orderer.historiaclinicaelectronica.com
-      #- orderer.org2.acme.com
-      #- orderer.org3.acme.com
+      - orderer.eps1.historiaclinicaelectronica.com
+      - orderer.eps2.historiaclinicaelectronica.com
+      - orderer.eps3.historiaclinicaelectronica.com
     peers:
       peer0.eps1.historiaclinicaelectronica.com:
         eventSource: true
@@ -71,11 +71,11 @@ clients:
         cryptoStore:
           path: tmp/hfc-kvs/eps1
       clientPrivateKey:
-        #path: ../acme-network/fabric-ca/org1.acme.com/users/client@org1.acme.com/msp/keystore/priv.key
-        path: ../red/crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/users/User1@eps1.historiaclinicaelectronica.com/msp/keystore/priv_sk
+        path: ../red/fabric-ca/eps1.historiaclinicaelectronica.com/users/client@eps1.historiaclinicaelectronica.com/msp/keystore/priv.key
+        #path: ../red/crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/users/User1@eps1.historiaclinicaelectronica.com/msp/keystore/priv_sk
       clientSignedCert:
-        #path: ../acme-network/fabric-ca/org1.acme.com/users/client@org1.acme.com/msp/signcerts/cert.pem
-        path: ../red/crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/users/User1@eps1.historiaclinicaelectronica.com/msp/signcerts/User1@eps1.historiaclinicaelectronica.com-cert.pem
+        path: ../red/fabric-ca/eps1.historiaclinicaelectronica.com/users/client@eps1.historiaclinicaelectronica.com/msp/signcerts/cert.pem
+        #path: ../red/crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/users/User1@eps1.historiaclinicaelectronica.com/msp/signcerts/User1@eps1.historiaclinicaelectronica.com-cert.pem
   client@eps2.historiaclinicaelectronica.com:
     client:
       organization: Eps2
@@ -88,11 +88,11 @@ clients:
         cryptoStore:
           path: tmp/hfc-kvs/eps2
       clientPrivateKey:
-        #path: ../acme-network/fabric-ca/org2.acme.com/users/client@org2.acme.com/msp/keystore/priv.key
-        path: ../red/crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/users/User1@eps2.historiaclinicaelectronica.com/msp/keystore/priv_sk
+        path: ../red/fabric-ca/eps2.historiaclinicaelectronica.com/users/client@eps2.historiaclinicaelectronica.com/msp/keystore/priv.key
+        #path: ../red/crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/users/User1@eps2.historiaclinicaelectronica.com/msp/keystore/priv_sk
       clientSignedCert:
-        #path: ../acme-network/fabric-ca/org2.acme.com/users/client@org2.acme.com/msp/signcerts/cert.pem
-        path: ../red/crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/users/User1@eps2.historiaclinicaelectronica.com/msp/signcerts/User1@eps2.historiaclinicaelectronica.com-cert.pem
+        path: ../red/fabric-ca/eps2.historiaclinicaelectronica.com/users/client@eps2.historiaclinicaelectronica.com/msp/signcerts/cert.pem
+        #path: ../red/crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/users/User1@eps2.historiaclinicaelectronica.com/msp/signcerts/User1@eps2.historiaclinicaelectronica.com-cert.pem
   client@eps3.historiaclinicaelectronica.com:
     client:
       organization: Eps3
@@ -105,16 +105,17 @@ clients:
         cryptoStore:
           path: tmp/hfc-kvs/eps3
       clientPrivateKey:
-        #path: ../acme-network/fabric-ca/org3.acme.com/users/client@org3.acme.com/msp/keystore/priv.key
-        path: ../red/crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/users/User1@eps3.historiaclinicaelectronica.com/msp/keystore/priv_sk
+        path: ../red/fabric-ca/eps3.historiaclinicaelectronica.com/users/client@eps3.historiaclinicaelectronica.com/msp/keystore/priv.key
+        #path: ../red/crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/users/User1@eps3.historiaclinicaelectronica.com/msp/keystore/priv_sk
       clientSignedCert:
-        #path: ../acme-network/fabric-ca/org3.acme.com/users/client@org3.acme.com/msp/signcerts/cert.pem
-        path: ../red/crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/users/User1@eps3.historiaclinicaelectronica.com/msp/signcerts/User1@eps3.historiaclinicaelectronica.com-cert.pem
+        path: ../red/fabric-ca/eps3.historiaclinicaelectronica.com/users/client@eps3.historiaclinicaelectronica.com/msp/signcerts/cert.pem
+        #path: ../red/crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/users/User1@eps3.historiaclinicaelectronica.com/msp/signcerts/User1@eps3.historiaclinicaelectronica.com-cert.pem
 peers:
   peer0.eps1.historiaclinicaelectronica.com:
     url: grpcs://localhost:7051
     tlsCACerts:
-      path: ../red/crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/peers/peer0.eps1.historiaclinicaelectronica.com/msp/tlscacerts/tlsca.eps1.historiaclinicaelectronica.com-cert.pem
+      #path: ../red/crypto-config/peerOrganizations/eps1.historiaclinicaelectronica.com/peers/peer0.eps1.historiaclinicaelectronica.com/msp/tlscacerts/tlsca.eps1.historiaclinicaelectronica.com-cert.pem
+      path: ../red/fabric-ca/eps1.historiaclinicaelectronica.com/tls-int/ca-chain.pem
     grpcOptions:
       ssl-target-name-override: peer0.eps1.historiaclinicaelectronica.com
       hostnameOverride: peer0.eps1.historiaclinicaelectronica.com
@@ -122,8 +123,8 @@ peers:
   peer0.eps2.historiaclinicaelectronica.com:
     url: grpcs://localhost:8051
     tlsCACerts:
-      #path: ../acme-network/fabric-ca/org2.acme.com/tls-int/ca-chain.pem
-      path: ../red/crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/peers/peer0.eps2.historiaclinicaelectronica.com/msp/tlscacerts/tlsca.eps2.historiaclinicaelectronica.com-cert.pem
+      path: ../red/fabric-ca/eps2.historiaclinicaelectronica.com/tls-int/ca-chain.pem
+      #path: ../red/crypto-config/peerOrganizations/eps2.historiaclinicaelectronica.com/peers/peer0.eps2.historiaclinicaelectronica.com/msp/tlscacerts/tlsca.eps2.historiaclinicaelectronica.com-cert.pem
     grpcOptions:
       ssl-target-name-override: peer0.eps2.historiaclinicaelectronica.com
       hostnameOverride: peer0.eps2.historiaclinicaelectronica.com
@@ -131,21 +132,40 @@ peers:
   peer0.eps3.historiaclinicaelectronica.com:
     url: grpcs://localhost:9051
     tlsCACerts:
-      #path: ../acme-network/fabric-ca/org3.acme.com/tls-int/ca-chain.pem
-      path: ../red/crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/peers/peer0.eps3.historiaclinicaelectronica.com/msp/tlscacerts/tlsca.eps3.historiaclinicaelectronica.com-cert.pem
+      path: ../red/fabric-ca/eps3.historiaclinicaelectronica.com/tls-int/ca-chain.pem
+      #path: ../red/crypto-config/peerOrganizations/eps3.historiaclinicaelectronica.com/peers/peer0.eps3.historiaclinicaelectronica.com/msp/tlscacerts/tlsca.eps3.historiaclinicaelectronica.com-cert.pem
     grpcOptions:
       ssl-target-name-override: peer0.eps3.historiaclinicaelectronica.com
       hostnameOverride: peer0.eps3.historiaclinicaelectronica.com
       grpc.keepalive_time_ms: 600000
 orderers:
-  orderer.historiaclinicaelectronica.com:
+  orderer.eps1.historiaclinicaelectronica.com:
     url: grpcs://localhost:7050
     grpcOptions:
-      ssl-target-name-override: orderer.historiaclinicaelectronica.com
+      ssl-target-name-override: orderer.eps1.historiaclinicaelectronica.com
     tlsCACerts:
-      #path: ../acme-network/fabric-ca/org1.acme.com/tls-int/ca-chain.pem
-      #path: ../red/crypto-config/ordererOrganizations/historiaclinicaelectronica.com/ca/ca.historiaclinicaelectronica.com-cert.pem
-      path: ../red/crypto-config/ordererOrganizations/historiaclinicaelectronica.com/orderers/orderer.historiaclinicaelectronica.com/msp/tlscacerts/tlsca.historiaclinicaelectronica.com-cert.pem
+      path: ../red/fabric-ca/eps1.historiaclinicaelectronica.com/tls-int/ca-chain.pem
+  orderer.eps2.historiaclinicaelectronica.com:
+    url: grpcs://localhost:8050
+    grpcOptions:
+      ssl-target-name-override: orderer.eps2.historiaclinicaelectronica.com
+    tlsCACerts:
+      path: ../red/fabric-ca/eps2.historiaclinicaelectronica.com/tls-int/ca-chain.pem
+  orderer.eps3.historiaclinicaelectronica.com:
+    url: grpcs://localhost:9050
+    grpcOptions:
+      ssl-target-name-override: orderer.eps3.historiaclinicaelectronica.com
+    tlsCACerts:
+      path: ../red/fabric-ca/eps3.historiaclinicaelectronica.com/tls-int/ca-chain.pem
+
+  # orderer.historiaclinicaelectronica.com:
+  #   url: grpcs://localhost:7050
+  #   grpcOptions:
+  #     ssl-target-name-override: orderer.historiaclinicaelectronica.com
+  #   tlsCACerts:
+  #     #path: ../acme-network/fabric-ca/org1.acme.com/tls-int/ca-chain.pem
+  #     #path: ../red/crypto-config/ordererOrganizations/historiaclinicaelectronica.com/ca/ca.historiaclinicaelectronica.com-cert.pem
+  #     path: ../red/crypto-config/ordererOrganizations/historiaclinicaelectronica.com/orderers/orderer.historiaclinicaelectronica.com/msp/tlscacerts/tlsca.historiaclinicaelectronica.com-cert.pem
   # orderer.org2.acme.com:
   #   url: grpcs://localhost:8050
   #   grpcOptions:

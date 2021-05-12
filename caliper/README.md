@@ -22,5 +22,3 @@ npx caliper launch master \
      #blocksize
      #blocktype
      #number of endorserments
-
-adhavpavan@gmail.comWhy do certain transactions fail .. could it be the network design?

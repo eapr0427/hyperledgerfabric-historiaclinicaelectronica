@@ -26,14 +26,6 @@ test:
       callback: benchmarks/callbacks/historiaclinica/queryhce.js
       arguments:
         historiaClinicaId: ehr:1
-    #- label: redeem
-    #  txNumber: 1
-    #  rateControl:
-    #    type: fixed-rate
-    #    opts:
-    #      tps: 25
-    #  callback: benchmarks/callbacks/foodcontrol/currency/redeem.js
-    #  arguments:
 observer:
   type: local
   interval: 1
